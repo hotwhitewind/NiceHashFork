@@ -139,7 +139,7 @@ namespace NiceHashMiner
             nicehash_json_2 nhjson_current;
             try
             {
-                nhjson_current = await JsonConvert.DeserializeObjectAsync<nicehash_json_2>(r1, Globals.JsonSettings);
+                nhjson_current = JsonConvert.DeserializeObject<nicehash_json_2>(r1, Globals.JsonSettings);
                 Dictionary<AlgorithmType, NiceHashSMA> ret = new Dictionary<AlgorithmType, NiceHashSMA>();
                 NiceHashSMA[] temp = nhjson_current.result.simplemultialgo;
                 if (temp != null) {
@@ -164,7 +164,7 @@ namespace NiceHashMiner
             nicehash_json<nicehash_stats> nhjson_current;
             try
             {
-                nhjson_current = await JsonConvert.DeserializeObjectAsync<nicehash_json<nicehash_stats>>(r1, Globals.JsonSettings);
+                nhjson_current = JsonConvert.DeserializeObject<nicehash_json<nicehash_stats>>(r1, Globals.JsonSettings);
                 for (int i = 0; i < nhjson_current.result.stats.Length; i++)
                 {
                     if (nhjson_current.result.stats[i].algo == algo)
@@ -190,7 +190,7 @@ namespace NiceHashMiner
 
                 try
                 {
-                    nhjson_current = await JsonConvert.DeserializeObjectAsync<mine_balance>(r1, Globals.JsonSettings);
+                    nhjson_current = JsonConvert.DeserializeObject<mine_balance>(r1, Globals.JsonSettings);
                 }
                 catch
                 {
@@ -214,7 +214,7 @@ namespace NiceHashMiner
                 try
                 {
 
-                    nhjson_current = await JsonConvert.DeserializeObjectAsync<mine_result>(r1, Globals.JsonSettings);
+                    nhjson_current = JsonConvert.DeserializeObject<mine_result>(r1, Globals.JsonSettings);
 
 
                     //for (int i = 0; i < nhjson_current.result.stats.Length; i++)
@@ -249,7 +249,7 @@ namespace NiceHashMiner
                 rate_result nhjson_current;
                 try
                 {
-                    nhjson_current = await JsonConvert.DeserializeObjectAsync<rate_result>(r1, Globals.JsonSettings);
+                    nhjson_current = JsonConvert.DeserializeObject<rate_result>(r1, Globals.JsonSettings);
 
                     //for (int i = 0; i < nhjson_current.result.stats.Length; i++)
                     //{
@@ -285,7 +285,7 @@ namespace NiceHashMiner
                 rate_result nhjson_current;
                 try
                 {
-                    nhjson_current = await JsonConvert.DeserializeObjectAsync<rate_result>(r1, Globals.JsonSettings);
+                    nhjson_current = JsonConvert.DeserializeObject<rate_result>(r1, Globals.JsonSettings);
 
                     //for (int i = 0; i < nhjson_current.result.stats.Length; i++)
                     //{
@@ -349,7 +349,7 @@ namespace NiceHashMiner
             mine_access nhjson;
             try
             {
-                nhjson = await JsonConvert.DeserializeObjectAsync<mine_access>(r1, Globals.JsonSettings);
+                nhjson = JsonConvert.DeserializeObject<mine_access>(r1, Globals.JsonSettings);
 
                 return nhjson;
             }
@@ -370,7 +370,7 @@ namespace NiceHashMiner
             nicehashminer_version nhjson;
             try
             {
-                nhjson = await JsonConvert.DeserializeObjectAsync<nicehashminer_version>(r1, Globals.JsonSettings);
+                nhjson = JsonConvert.DeserializeObject<nicehashminer_version>(r1, Globals.JsonSettings);
                 return nhjson;
             }
             catch
@@ -397,7 +397,7 @@ namespace NiceHashMiner
             cursrub_result nhjson;
             try
             {
-                nhjson = await JsonConvert.DeserializeObjectAsync<cursrub_result>(r1, Globals.JsonSettings);
+                nhjson = JsonConvert.DeserializeObject<cursrub_result>(r1, Globals.JsonSettings);
                 if (!nhjson.error)
                 {
                     RUB_COIN = nhjson.rub;
