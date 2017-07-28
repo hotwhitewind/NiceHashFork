@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F56EDA9-CF7F-4C49-A67B-3FCD434D4902}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NewStyleMiner</RootNamespace>
+    <AssemblyName>bCash</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>NewStyleMiner.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>2F31079C7759428910F648462CA74A6CCB1B2B3F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>NewStyleMiner_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>NewStyleMiner_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification">
+      <HintPath>ref\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\3rdparty\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.1.9.0\lib\net45\MahApps.Metro.IconPacks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.MahApps, Version=0.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.MahApps.0.0.10\lib\net45\MaterialDesignThemes.MahApps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.3.0.823, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.3.0.823\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>3rdparty\json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Data, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="3rdParty\ADL.cs" />
+    <Compile Include="AdditionalDialogs\LoadingForm.xaml.cs">
+      <DependentUpon>LoadingForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Algorithm.cs" />
+    <Compile Include="AdditionalDialogs\ChoosingLanguageWindow.xaml.cs">
+      <DependentUpon>ChoosingLanguageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configs\ConfigJsonFile\ConfigFile.cs" />
+    <Compile Include="Configs\ConfigJsonFile\DeviceBenchmarkConfigFile.cs" />
+    <Compile Include="Configs\ConfigJsonFile\FOLDERS.cs" />
+    <Compile Include="Configs\ConfigJsonFile\GeneralConfigFile.cs" />
+    <Compile Include="Configs\ConfigManager.cs" />
+    <Compile Include="Configs\Data\AlgorithmConfig.cs" />
+    <Compile Include="Configs\Data\BenchmarkTimeLimitsConfig.cs" />
+    <Compile Include="Configs\Data\ComputeDeviceConfig.cs" />
+    <Compile Include="Configs\Data\DeviceBenchmarkConfig.cs" />
+    <Compile Include="Configs\Data\DeviceDetectionConfig.cs" />
+    <Compile Include="Configs\Data\GeneralConfig.cs" />
+    <Compile Include="Devices\AmdGpuDevice.cs" />
+    <Compile Include="Devices\ComputeDevice.cs" />
+    <Compile Include="Devices\ComputeDeviceManager.cs" />
+    <Compile Include="Devices\CPUUtils.cs" />
+    <Compile Include="Devices\CudaDevice.cs" />
+    <Compile Include="Devices\CUDA_Unsupported.cs" />
+    <Compile Include="Devices\GroupAlgorithms.cs" />
+    <Compile Include="Devices\GroupNames.cs" />
+    <Compile Include="Devices\OpenCLDevice.cs" />
+    <Compile Include="Enums\AlgorithmBenchmarkSettingsType.cs" />
+    <Compile Include="Enums\AlgorithmType.cs" />
+    <Compile Include="Enums\BenchmarkPerformanceType.cs" />
+    <Compile Include="Enums\BenchmarkProcessStatus.cs" />
+    <Compile Include="Enums\CPUExtensionType.cs" />
+    <Compile Include="Enums\DagGenerationType.cs" />
+    <Compile Include="Enums\DeviceGroupType.cs" />
+    <Compile Include="Enums\DeviceMiningStatus.cs" />
+    <Compile Include="Enums\DeviceType.cs" />
+    <Compile Include="Enums\LanguageType.cs" />
+    <Compile Include="Enums\MinerAPIReadStatus.cs" />
+    <Compile Include="Enums\MinerBaseType.cs" />
+    <Compile Include="Enums\MinerOptionFlagType.cs" />
+    <Compile Include="Enums\MinerStopType.cs" />
+    <Compile Include="Enums\MinerType.cs" />
+    <Compile Include="Enums\NHMConectionType.cs" />
+    <Compile Include="Enums\ConstStringSource.cs" />
+    <Compile Include="Enums\Use3rdPartyMiners.cs" />
+    <Compile Include="ExchangeRateAPI.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="Interfaces\IBenchmarkCalculation.cs" />
+    <Compile Include="Interfaces\IBenchmarkComunicator.cs" />
+    <Compile Include="Interfaces\IListItemCheckColorSetter.cs" />
+    <Compile Include="Interfaces\IMainFormRatesComunication.cs" />
+    <Compile Include="Interfaces\IMessageNotifier.cs" />
+    <Compile Include="Interfaces\IMinerUpdateIndicator.cs" />
+    <Compile Include="Miners\ccminer.cs" />
+    <Compile Include="Miners\ClaymoreBaseMiner.cs" />
+    <Compile Include="Miners\ClaymoreCryptoNightMiner.cs" />
+    <Compile Include="Miners\ClaymoreDual.cs" />
+    <Compile Include="Miners\Equihash\ClaymoreZcashMiner.cs" />
+    <Compile Include="Miners\Equihash\nheqBase.cs" />
+    <Compile Include="Miners\Equihash\nheqminer.cs" />
+    <Compile Include="Miners\Equihash\OptiminerZcashMiner.cs" />
+    <Compile Include="Miners\ethminer\Ethereum.cs" />
+    <Compile Include="Miners\ethminer\MinerEtherum.cs" />
+    <Compile Include="Miners\ethminer\MinerEtherumCUDA.cs" />
+    <Compile Include="Miners\ethminer\MinerEtherumOCL.cs" />
+    <Compile Include="Miners\excavator.cs" />
+    <Compile Include="Miners\Grouping\GroupingLogic.cs" />
+    <Compile Include="Miners\Grouping\GroupMiner.cs" />
+    <Compile Include="Miners\Grouping\GroupSetupUtils.cs" />
+    <Compile Include="Miners\Grouping\MinerPaths.cs" />
+    <Compile Include="Miners\Grouping\MiningDevice.cs" />
+    <Compile Include="Miners\Grouping\MiningPair.cs" />
+    <Compile Include="Miners\Grouping\MiningSetup.cs" />
+    <Compile Include="Miners\Miner.cs" />
+    <Compile Include="Miners\MinerFactory.cs" />
+    <Compile Include="Miners\MinersApiPortsManager.cs" />
+    <Compile Include="Miners\MinersManager.cs" />
+    <Compile Include="Miners\MinersSettingsManager.cs" />
+    <Compile Include="Miners\MiningSession.cs" />
+    <Compile Include="Miners\Obsolete\cpuminer.cs" />
+    <Compile Include="Miners\Obsolete\eqm.cs" />
+    <Compile Include="Miners\Parsing\ExtraLaunchParameters.cs" />
+    <Compile Include="Miners\Parsing\ExtraLaunchParametersParser.cs" />
+    <Compile Include="Miners\Parsing\MinerOption.cs" />
+    <Compile Include="Miners\Parsing\MinerOptionPackage.cs" />
+    <Compile Include="Miners\sgminer.cs" />
+    <Compile Include="Miners\XmrStackCPUMiner.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\AlgorithmNiceHashNames.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\BINS_CODEGEN.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\BINS_CODEGEN_3rd.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\BitcoinAddress.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\CommandLineParser.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\DownloadSetup.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\Helpers.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\International.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\Links.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\Logger.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\MemoryHelper.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\MinersDownloader.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\MinersDownloadManager.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\MinersExistanceChecker.cs" />
+    <Compile Include="Devices\NiceHashMiner\Utils\ProfitabilityCalculator.cs" />
+    <Compile Include="NiceHashStats.cs" />
+    <Compile Include="PInvoke\CPUID.cs" />
+    <Compile Include="PInvoke\NiceHashProcess.cs" />
+    <Compile Include="PInvoke\PInvokeHelpers.cs" />
+    <Compile Include="Utils\BenchmarkHelp.cs" />
+    <Compile Include="Utils\ButtonHelper.cs" />
+    <Compile Include="Utils\DelegateCommand.cs" />
+    <Compile Include="Utils\LangEnumToStringConverter.cs" />
+    <Compile Include="Utils\PaySystemHelper.cs" />
+    <Compile Include="ViewModels\AlgoritmSettingsModel.cs" />
+    <Compile Include="Utils\CloseWindowBehavior.cs" />
+    <Compile Include="ViewModels\AmountRate.cs" />
+    <Compile Include="ViewModels\CommonSettingsModel.cs" />
+    <Compile Include="ViewModels\LoadingViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MeasureModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AdditionalDialogs\ChoosingLanguageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdditionalDialogs\LoadingForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\AlgoritmSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CommonSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="langs\en.lang">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="langs\es.lang" />
+    <None Include="langs\pt.lang" />
+    <None Include="langs\ru.lang">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NewStyleMiner_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bkg-blu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\paymentsicon\alfabank.png" />
+    <Resource Include="Resources\paymentsicon\american-express.png" />
+    <Resource Include="Resources\paymentsicon\assist.png" />
+    <Resource Include="Resources\paymentsicon\chronopay.png" />
+    <Resource Include="Resources\paymentsicon\cirrus.png" />
+    <Resource Include="Resources\paymentsicon\contact.png" />
+    <Resource Include="Resources\paymentsicon\diners-club.png" />
+    <Resource Include="Resources\paymentsicon\elecsnet.png" />
+    <Resource Include="Resources\paymentsicon\Intellectmoney.png" />
+    <Resource Include="Resources\paymentsicon\jcb.png" />
+    <Resource Include="Resources\paymentsicon\maestro.png" />
+    <Resource Include="Resources\paymentsicon\mail-money.png" />
+    <Resource Include="Resources\paymentsicon\mastercard.png" />
+    <Resource Include="Resources\paymentsicon\migom.png" />
+    <Resource Include="Resources\paymentsicon\moneymail.png" />
+    <Resource Include="Resources\paymentsicon\mts-bank.png" />
+    <Resource Include="Resources\paymentsicon\paypal.png" />
+    <Resource Include="Resources\paymentsicon\payu.png" />
+    <Resource Include="Resources\paymentsicon\qiwi.png" />
+    <Resource Include="Resources\paymentsicon\rbk-money.png" />
+    <Resource Include="Resources\paymentsicon\robokassa.png" />
+    <Resource Include="Resources\paymentsicon\robokassa2.png" />
+    <Resource Include="Resources\paymentsicon\sberbank.png" />
+    <Resource Include="Resources\paymentsicon\skrill-moneybookers.png" />
+    <Resource Include="Resources\paymentsicon\telemoney.png" />
+    <Resource Include="Resources\paymentsicon\unistream.png" />
+    <Resource Include="Resources\paymentsicon\visa.png" />
+    <Resource Include="Resources\paymentsicon\webmoney.png" />
+    <Resource Include="Resources\paymentsicon\western-union.png" />
+    <Resource Include="Resources\paymentsicon\yandex-money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon_.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\main_screen-i2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon_.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

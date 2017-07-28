@@ -1,0 +1,77 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr:namespace:NewStyleMiner"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      DataContext="{Binding CommonSettingsModel, Source={StaticResource MainViewModel}}">
+    <Page.Background>
+        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+    </Page.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <GroupBox Header="Основные">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="Биткоин-адрес" Margin="3" Grid.ColumnSpan="2"/>
+                    <TextBox MinWidth="250" Margin="3" Grid.Row="1" Grid.ColumnSpan="4" IsEnabled="False"/>
+                    <Label Content="Имя воркера" Margin="3" Grid.Row="2"/>
+                    <TextBox Margin="3" Grid.Row="3" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <Label Content="Локация" Margin="3" Grid.Column="3" Grid.Row="2"/>
+                    <ComboBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"></ComboBox> 
+                    <Label Content="Мин. прибыльность ($/день)" Margin="3" Grid.Row="4" Grid.ColumnSpan="2"/>
+                    <TextBox Margin="3" Grid.Row="5" Grid.ColumnSpan="3"/>
+                    <CheckBox Content="Простаивать, когда нет интернета" Margin="3" Grid.Row="6" Grid.ColumnSpan="3"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Локализация">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Отображение валюты" Margin="3"/>
+                    <ComboBox x:Name="comboBox" Margin="3" Width="70" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="USD"></ComboBoxItem>
+                        <ComboBoxItem Content="EUR"></ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Логирование">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <CheckBox Content="Запись в файл" Margin="3"/>
+                    <CheckBox Content="Окно отладки" Margin="3" Grid.Row="1"/>
+                    <Label Content="Размер лог. файла (кбайт)" Margin="3" Grid.Column="1"/>
+                    <TextBox Margin="3" Text="1677881" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+            </GroupBox>            
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <GroupBox Header="Разное">
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Page>
