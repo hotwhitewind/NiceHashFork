@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +22,7 @@ using NiceHashMiner;
 using MahApps.Metro.Controls.Dialogs;
 using NewStyleMiner.ViewModels;
 using NewStyleMiner.AdditionalDialogs;
+using Application = System.Windows.Application;
 using ContextMenu = System.Windows.Forms.ContextMenu;
 using MenuItem = System.Windows.Forms.MenuItem;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
@@ -48,7 +51,8 @@ namespace NewStyleMiner
 
             _notifyIcon.ContextMenu = new ContextMenu();
             _notifyIcon.ContextMenu.MenuItems.Add(menuItem1);
-            _notifyIcon.Icon = new Icon("..\\NewStyleMiner\\Resources\\icon_.ico");
+            Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/bCash;component/Resources/icon_.ico")).Stream;
+            _notifyIcon.Icon = new System.Drawing.Icon(iconStream);
             _notifyIcon.Visible = true;
             if (!ConfigManager.GeneralConfigIsFileExist())
             {
