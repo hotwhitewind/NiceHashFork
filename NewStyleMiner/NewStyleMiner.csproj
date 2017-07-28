@@ -73,7 +73,7 @@
     <ManifestKeyFile>NewStyleMiner_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>NewStyleMiner_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
