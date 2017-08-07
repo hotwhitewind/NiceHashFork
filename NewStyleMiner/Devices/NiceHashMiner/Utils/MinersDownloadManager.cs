@@ -23,5 +23,16 @@ namespace NiceHashMiner.Utils {
             "https://github.com/nicehash/NiceHashMiner/releases/download/1.7.0.0-dev/bin_3rdparty_1_7_5_8.zip",
             "bins_3rdparty.zip",
             "bin_3rdparty");
+
+        public static DownloadSetup StandardDlSetupTest = new DownloadSetup(
+            "http://192.168.233.130/bins.zip",
+            "bins.zip",
+            "bin");
+
+        public static DownloadSetup ThirdPartyDlSetupTest = new DownloadSetup(
+            "http://192.168.233.130/bins_3rdparty.zip",
+            "bins_3rdparty.zip",
+            "bin_3rdparty");
+
     }
 }

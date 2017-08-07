@@ -26,6 +26,8 @@
     "MainDay": "Day",
     "MainWeek": "Week",
     "MainMonth": "Month",
+    "MainYear": "Year",
+
     "HideToTray": "Hide to tray",
     "ToolTipHideToTray": "When close button pushed? application hiding to tray", 
 

@@ -14,6 +14,7 @@ namespace NiceHashMiner.Configs.Data {
         public bool HideToTray = false;
         public Version ConfigFileVersion;
         public LanguageType Language = LanguageType.Ru;
+        public bool IsBenchmarkFirstTimeDoing = false;
         public string DisplayCurrency = "USD";
         public string IdentificationString = "";
         public bool DebugConsole = false;
@@ -87,6 +88,7 @@ namespace NiceHashMiner.Configs.Data {
             //LessThreads = 0;
             DebugConsole = false;
             HideMiningWindows = true;
+            IsBenchmarkFirstTimeDoing = false;
             MinimizeToTray = false;
             BenchmarkTimeLimits = new BenchmarkTimeLimitsConfig();
             DeviceDetection = new DeviceDetectionConfig();
@@ -94,7 +96,7 @@ namespace NiceHashMiner.Configs.Data {
             DisableDefaultOptimizations = false;
             AutoScaleBTCValues = true;
             StartMiningWhenIdle = true;
-            LogToFile = true;
+            LogToFile = false;
             LogMaxFileSize = 1048576;
             ShowDriverVersionWarning = true;
             DisableWindowsErrorReporting = true;

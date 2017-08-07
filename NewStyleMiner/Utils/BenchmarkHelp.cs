@@ -486,7 +486,7 @@ namespace NewStyleMiner.Utils
                 _currentMiner.InitBenchmarkSetup(new MiningPair(_currentDevice, _currentAlgorithm));
 
                 var time = ConfigManager.GeneralConfig.BenchmarkTimeLimits
-                    .GetBenchamrktime(BenchmarkPerformanceType.Standard, _currentDevice.DeviceGroupType);
+                    .GetBenchamrktime(BenchmarkPerformanceType.Quick, _currentDevice.DeviceGroupType);
                 //currentConfig.TimeLimit = time;
                 if (__CPUBenchmarkStatus != null)
                 {
@@ -555,10 +555,10 @@ namespace NewStyleMiner.Utils
             _tcs.SetResult(true);
         }
 
-        public void OnBenchmarkComplete(bool success, string status)
+        public async Task OnBenchmarkComplete(bool success, string status)
         {
             if (!_inBenchmark) return;
-            Application.Current.Dispatcher.BeginInvoke(new Action(()=>
+            await Application.Current.Dispatcher.BeginInvoke(new Action(()=>
             {
                 _bechmarkedSuccessCount += success ? 1 : 0;
                 bool rebenchSame = false;
@@ -633,7 +633,7 @@ namespace NewStyleMiner.Utils
                 {
                     NextBenchmark();
                 }
-            })).Wait();
+            }));
         }
 
         public void SetCurrentStatus(string status)

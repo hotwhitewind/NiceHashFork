@@ -52,10 +52,10 @@ namespace NewStyleMiner
 
             if (startProgram)
             {
-                //if (ConfigManager.GeneralConfig.LogToFile)
-                //{
-                //    Logger.ConfigureWithFile();
-                //}
+                if (ConfigManager.GeneralConfig.LogToFile)
+                {
+                    Logger.ConfigureWithFile();
+                }
 
                 if (ConfigManager.GeneralConfig.DebugConsole)
                 {

@@ -17,7 +17,7 @@ namespace NiceHashMiner.Configs.Data
         [field: NonSerialized]
         readonly static private int[] DEFAULT_CPU_NVIDIA = { 5, 5, 5 };
         [field: NonSerialized]
-        readonly static private int[] DEFAULT_AMD = { 5, 5, 5 };
+        readonly static private int[] DEFAULT_AMD = { 120, 180, 240 };
         [field: NonSerialized]
         readonly static public int SIZE = 3;
         #endregion CONSTANTS

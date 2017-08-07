@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace NewStyleMiner.ViewModels
 { 
@@ -125,11 +126,11 @@ namespace NewStyleMiner.ViewModels
             }
         }
 
-        public async Task StartMinerDownloads()
+        public async Task StartMinerDownloads(IDialogCoordinator dialogCoordinator)
         {
             if (_isMinerDownload && _minerDownloader != null)
             {
-                await _minerDownloader.Start(this);
+                await _minerDownloader.Start(this, dialogCoordinator);
             }
         }
 

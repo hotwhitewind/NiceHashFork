@@ -19,10 +19,7 @@ using LiveCharts;
 using LiveCharts.Configurations;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.Remoting.Channels;
 using System.Text.RegularExpressions;
-using System.Windows.Controls.Primitives;
-using System.Windows.Forms;
 using static NewStyleMiner.Utils.PaySystemHelper;
 using Application = System.Windows.Application;
 using Timer = System.Timers.Timer;
@@ -52,7 +49,6 @@ namespace NewStyleMiner.ViewModels
         private bool IsManuallyStarted = false;
 
         private IDialogCoordinator _dialogCoordinator;
-        private readonly bool _isFirstRuning;
         private double _axisMax;
         private double _axisMin;
         private MainWindow _mainWindow;
@@ -86,13 +82,7 @@ namespace NewStyleMiner.ViewModels
             SetAxisLimits(DateTime.Now);
 
             ConfigManager.GeneralConfig.WorkerName = _worker;
-            ConfigManager.GeneralConfig.LogToFile = false;
             ConfigManager.GeneralConfig.Use3rdPartyMiners = Use3rdPartyMiners.YES;
-            _isFirstRuning = false;
-            if (!ConfigManager.GeneralConfigIsFileExist())
-            {
-                _isFirstRuning = true;
-            }
             LoadingViewModel.OnShow += LoadingViewModel_OnShow;
 
             OpenSettingsWindow = new DelegateCommand<object>(async (c) =>
@@ -248,6 +238,7 @@ namespace NewStyleMiner.ViewModels
             ConfigManager.AfterDeviceQueryInitialization();
             LoadingViewModel.LoadingLabelText = International.GetText("Form_Main_loadtext_SaveConfig");
             
+            
             await BalanceCheck_Tick(null, null); // update currency changes
 
             MinerStatsCheck = new Timer();
@@ -348,7 +339,7 @@ namespace NewStyleMiner.ViewModels
                 {
                     LoadingViewModel.MinerDownloader = new MinersDownloader(MinersDownloadManager.StandardDlSetup);
                     LoadingViewModel.IsMinerDownload = true;
-                    await LoadingViewModel.StartMinerDownloads();
+                    await LoadingViewModel.StartMinerDownloads(_dialogCoordinator);
                 }
 
                 // check if files are mising
@@ -391,7 +382,7 @@ namespace NewStyleMiner.ViewModels
                     {
                         LoadingViewModel.MinerDownloader = new MinersDownloader(MinersDownloadManager.ThirdPartyDlSetup);
                         LoadingViewModel.IsMinerDownload = true;
-                        await LoadingViewModel.StartMinerDownloads();
+                        await LoadingViewModel.StartMinerDownloads(_dialogCoordinator);
                     }
                     // check if files are mising
                     if (!MinersExistanceChecker.IsMiners3rdPartyBinsInit())
@@ -426,15 +417,15 @@ namespace NewStyleMiner.ViewModels
                 }
             }
 
-            //if (runVcRed)
-            //{
-            //    Helpers.InstallVcRedist();
-            //}
+            if (runVcRed)
+            {
+                //Helpers.InstallVcRedist();
+            }
 
             LoadingViewModel.LoadingLabelText = International.GetText("Benchmark_Start");
 
             //бечмарк
-            if (_isFirstRuning)
+            if (!ConfigManager.GeneralConfig.IsBenchmarkFirstTimeDoing)
             {
                 await BencmarkDevices();
             }
@@ -518,6 +509,8 @@ namespace NewStyleMiner.ViewModels
                 }
             }
             ComputeDeviceManager.Group.UncheckedCPU();
+            ConfigManager.GeneralConfig.IsBenchmarkFirstTimeDoing = true;
+            ConfigManager.GeneralConfigFileCommit();
         }
 
         async Task BitcoinExchangeCheck_Tick(object sender, EventArgs e)
@@ -643,24 +636,31 @@ namespace NewStyleMiner.ViewModels
 
             var msIdle = Helpers.GetIdleTime();
 
-            if (MinerStatsCheck.Enabled)
+            try
             {
-                if (msIdle < (ConfigManager.GeneralConfig.MinIdleSeconds * 1000))
+                if (MinerStatsCheck.Enabled)
                 {
-                    await StopMining();
-                    Helpers.ConsolePrint("NICEHASH", "Resumed from idling");
-                }
-            }
-            else
-            {
-                if ((msIdle > (ConfigManager.GeneralConfig.MinIdleSeconds * 1000)))
-                {
-                    Helpers.ConsolePrint("NICEHASH", "Entering idling state");
-                    if (await StartMining(false) != StartMiningReturnType.StartMining)
+                    if (msIdle < (ConfigManager.GeneralConfig.MinIdleSeconds * 1000))
                     {
                         await StopMining();
+                        Helpers.ConsolePrint("NICEHASH", "Resumed from idling");
                     }
                 }
+                else
+                {
+                    if ((msIdle > (ConfigManager.GeneralConfig.MinIdleSeconds * 1000)))
+                    {
+                        Helpers.ConsolePrint("NICEHASH", "Entering idling state");
+                        if (await StartMining(false) != StartMiningReturnType.StartMining)
+                        {
+                            await StopMining();
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Helpers.ConsolePrint("IdleCheck exception", "MinerStatsCheck exception:" + ex.Message);
             }
         }
 
@@ -791,17 +791,6 @@ namespace NewStyleMiner.ViewModels
             DataGridSource = new ObservableCollection<AmountRate>();
             DataGridSource.Add(new AmountRate()
             {
-                AmountType = MinuteCaption,
-                AmountCount = Math.Round(amountPerMinute, 2)
-            });
-
-            DataGridSource.Add(new AmountRate()
-            {
-                AmountType = HoureCaption,
-                AmountCount = Math.Round(amountPerMinute * 60, 2)
-            });
-            DataGridSource.Add(new AmountRate()
-            {
                 AmountType = DayCaption,
                 AmountCount = Math.Round(amountPerMinute * 60 * 24, 2)
             });
@@ -814,6 +803,11 @@ namespace NewStyleMiner.ViewModels
             {
                 AmountType = MonthCaption,
                 AmountCount = Math.Round(amountPerMinute * 60 * 24 * 30, 2)
+            });
+            DataGridSource.Add(new AmountRate()
+            {
+                AmountType = YearCaption,
+                AmountCount = Math.Round(amountPerMinute * 60 * 24 * 30 * 12, 2)
             });
         }
 
@@ -1177,6 +1171,8 @@ namespace NewStyleMiner.ViewModels
         public string WeekCaption => International.GetText("MainWeek");
 
         public string MonthCaption => International.GetText("MainMonth");
+
+        public string YearCaption => International.GetText("MainYear");
 
 
         public ChartValues<MeasureModel> ChartValues { get; set; }

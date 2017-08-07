@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace NiceHashMiner.Utils {
     public class MinersDownloader {
@@ -23,6 +24,7 @@ namespace NiceHashMiner.Utils {
         Thread _UnzipThread = null;
         private TaskCompletionSource<bool> _tcs; 
         bool isDownloadSizeInit = false;
+        private IDialogCoordinator _dialogCoordinator;
 
         IMinerUpdateIndicator _minerUpdateIndicator;
 
@@ -30,10 +32,10 @@ namespace NiceHashMiner.Utils {
             _downloadSetup = downloadSetup;
         }
 
-        public async Task Start(IMinerUpdateIndicator minerUpdateIndicator) {
+        public async Task Start(IMinerUpdateIndicator minerUpdateIndicator, IDialogCoordinator dialogCoordinator) {
             _minerUpdateIndicator = minerUpdateIndicator;
             _tcs = new TaskCompletionSource<bool>();
-
+            _dialogCoordinator = dialogCoordinator;
             //if something not right delete previous and download new
             try
             {
@@ -46,12 +48,15 @@ namespace NiceHashMiner.Utils {
                     Directory.Delete(_downloadSetup.ZipedFolderName, true);
                 }
             }
-            catch { }
-            await Downlaod();
+            catch (Exception ex)
+            {
+                Helpers.ConsolePrint("MinersDownloadManager", ex.Message);
+            }
+            await Download();
         }
 
         // #2 download the file
-        private async Task Downlaod() {
+        private async Task Download() {
             _minerUpdateIndicator.SetTitle(International.GetText("MinersDownloadManager_Title_Downloading"));
             _stopwatch = new Stopwatch();
             using (_webClient = new WebClient()) {
@@ -111,8 +116,13 @@ namespace NiceHashMiner.Utils {
                 // extra check dirty
                 int try_count = 50;
                 while (!File.Exists(_downloadSetup.BinsZipLocation) && try_count > 0) { --try_count; }
-
-                await UnzipStart();
+                try
+                {
+                    await UnzipStart();
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -157,7 +167,6 @@ namespace NiceHashMiner.Utils {
                     //    }
                     //}
                     archive.Dispose();
-                    archive = null;
                     // after unzip stuff
                     // remove bins zip
                     try
