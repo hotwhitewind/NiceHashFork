@@ -19,6 +19,7 @@ using LiveCharts;
 using LiveCharts.Configurations;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using static NewStyleMiner.Utils.PaySystemHelper;
 using Application = System.Windows.Application;
@@ -579,7 +580,7 @@ namespace NewStyleMiner.ViewModels
             var ver = await NiceHashStats.GetNewVersion();
 
             if (ver == null) return;
-            var programVersion = new Version(Globals.AppVersion);
+            var programVersion = new Version(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion);
             var onlineVersion = new Version(ver.version);
             var ret = programVersion.CompareTo(onlineVersion);
 
