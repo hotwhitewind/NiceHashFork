@@ -24,6 +24,7 @@ namespace NiceHashMiner {
         // device profits
         public static string NHM_Profit_Check = "https://api.nicehash.com/?utm_source=NHM&p=calc&name=";
 
-        public static string NewBalanceTestApi = "http://ch57448.tmweb.ru/api/v1/";
+        public static string NewBalanceTestApi = "http://bcash.it/api/v1/";//"http://ch57448.tmweb.ru/api/v1/";
+
     }
 }

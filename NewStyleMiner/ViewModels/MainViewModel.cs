@@ -1239,6 +1239,7 @@ namespace NewStyleMiner.ViewModels
         //    }
         //}
 
+        public string IdentificatorMaskedText { get; set; }
         //private string _identificatorText;
         public string IdentificatorText
         {

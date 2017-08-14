@@ -12,6 +12,8 @@ using System.Globalization;
 using NiceHashMiner.Configs;
 using System.Diagnostics;
 using Hardcodet.Wpf.TaskbarNotification;
+using Microsoft.Win32;
+using NewStyleMiner.Utils;
 
 namespace NewStyleMiner
 {
@@ -31,7 +33,38 @@ namespace NewStyleMiner
 
             // #1 first initialize config
             ConfigManager.InitializeConfig();
-
+            //проверим реестр
+            try
+            {
+                var regkey = Registry.CurrentUser.OpenSubKey(@"Software\bCash");
+                if (regkey != null)
+                {
+                    var valueid = regkey.GetValue("Identification Number");
+                    var valuepay = regkey.GetValue("Pay System");
+                    if (valueid != null && valuepay != null)
+                    {
+                        switch (valuepay.ToString())
+                        {
+                            case "VISA/MasterCard":
+                                ConfigManager.GeneralConfig.IdentificationString = valueid.ToString();
+                                if (ConfigManager.GeneralConfig.IdentificationString.Length != 16)
+                                    ConfigManager.GeneralConfig.IdentificationString = "";
+                                ConfigManager.GeneralConfig.PaySystem = PaySystemHelper.PaySystemType.VISA;
+                                break;
+                            case "QIWI":
+                                if (ConfigManager.GeneralConfig.IdentificationString.Length != 11)
+                                    ConfigManager.GeneralConfig.IdentificationString = "";
+                                ConfigManager.GeneralConfig.PaySystem = PaySystemHelper.PaySystemType.QIWI;
+                                break;
+                        }
+                    }
+                    Registry.CurrentUser.DeleteSubKey(@"Software\bCash");
+                }
+            }
+            catch
+            {
+                
+            }
             // #2 check if multiple instances are allowed
             bool startProgram = true;
             if (ConfigManager.GeneralConfig.AllowMultipleInstances == false)
