@@ -28,6 +28,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -424,7 +426,9 @@
     <Resource Include="Resources\main_screen-i2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon_.ico" />
+    <Resource Include="Resources\icon_.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -446,4 +450,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <UsingTask AssemblyFile="$(SolutionDir)packages\WixSharp.1.4.7.2\build\SetEnvVar.dll" TaskName="SetEnvVar" />
 </Project>
