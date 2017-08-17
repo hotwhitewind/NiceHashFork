@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using NiceHashMiner;
-using NiceHashMiner.Utils;
 using Newtonsoft.Json;
 using System.Globalization;
 using NiceHashMiner.Configs;
 using System.Diagnostics;
-using Hardcodet.Wpf.TaskbarNotification;
 using Microsoft.Win32;
 using NewStyleMiner.Utils;
 
